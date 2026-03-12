@@ -1,3 +1,9 @@
+---
+title: Logging
+description: Structured logging pipeline — filters, enrichers, formatters, and log drivers
+package: logging
+---
+
 # Logging Package Cheatsheet
 
 Code-verified reference for `packages/logging`.
@@ -113,6 +119,12 @@ Config keys:
 - `create(ContainerInterface $container, LoggerInterface $logger, array $config = []): callable`
 - `defaultSetup(ContainerInterface $container, LoggerInterface $logger): callable`
 - `productionSetup(ContainerInterface $container, LoggerInterface $logger): callable`
+
+## Wiretap Integration
+
+`Cognesy\Logging\Integrations\EventPipelineWiretap`:
+- `EventPipelineWiretap(mixed $pipeline)` — wraps a `callable(Event): void` pipeline
+- `__invoke(object $event): void` — forwards `Event` instances to the pipeline, ignores non-Event objects
 
 ## Framework Integrations
 
